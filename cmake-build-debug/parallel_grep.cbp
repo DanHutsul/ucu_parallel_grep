@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="parallel_grep"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\Program Files\;CMake Files\Program Files\boost\;CMake Files\Program Files\boost\lib\;CMake Files\Program Files\boost\lib\cmake\;CMake Files\Program Files\boost\lib\cmake\Boost-1.75.0\;CMake Files\Program Files\boost\lib\cmake\boost_headers-1.75.0\;CMake Files\Program Files\boost\lib\cmake\boost_iostreams-1.75.0\;CMake Files\Program Files\boost\lib\cmake\boost_filesystem-1.75.0\;CMake Files\Program Files\boost\lib\cmake\boost_locale-1.75.0\;CMake Files\Program Files\boost\lib\cmake\boost_system-1.75.0\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\Soft\;CMake Files\..\..\..\..\..\..\Soft\MSYS2\;CMake Files\..\..\..\..\..\..\Soft\MSYS2\mingw64\;CMake Files\..\..\..\..\..\..\Soft\MSYS2\mingw64\lib\;CMake Files\..\..\..\..\..\..\Soft\MSYS2\mingw64\lib\cmake\;CMake Files\..\..\..\..\..\..\Soft\MSYS2\mingw64\lib\cmake\tbb\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="parallel_grep">
+				<Option output="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/parallel_grep.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBOOST_ALL_NO_LIB"/>
+					<Add directory="C:/Program Files/boost/include/boost-1_75"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../include/c++/10.2.0"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../include/c++/10.2.0/x86_64-w64-mingw32"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../include/c++/10.2.0/backward"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/include"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../include"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/include-fixed"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 parallel_grep"/>
+					<CompileFile command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="parallel_grep/fast">
+				<Option output="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/parallel_grep.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBOOST_ALL_NO_LIB"/>
+					<Add directory="C:/Program Files/boost/include/boost-1_75"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../include/c++/10.2.0"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../include/c++/10.2.0/x86_64-w64-mingw32"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../include/c++/10.2.0/backward"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/include"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../include"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/include-fixed"/>
+					<Add directory="D:/Da/Soft/MSYS2/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 parallel_grep/fast"/>
+					<CompileFile command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Da/Soft/MSYS2/mingw64/bin/mingw32-make.exe -f &quot;D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/inc/config.h">
+			<Option target="parallel_grep"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/inc/precise_time.h">
+			<Option target="parallel_grep"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/src/main.cpp">
+			<Option target="parallel_grep"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/BoostDetectToolset-1.75.0.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/Boost-1.75.0/BoostConfig.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\Boost-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/Boost-1.75.0/BoostConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\Boost-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_headers-1.75.0/boost_headers-config-version.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_headers-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_headers-1.75.0/boost_headers-config.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_headers-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_iostreams-1.75.0/boost_iostreams-config-version.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_iostreams-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_iostreams-1.75.0/boost_iostreams-config.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_iostreams-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_iostreams-1.75.0/libboost_iostreams-variant-mgw10-mt-d-x32-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_iostreams-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_iostreams-1.75.0/libboost_iostreams-variant-mgw10-mt-d-x64-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_iostreams-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_iostreams-1.75.0/libboost_iostreams-variant-mgw10-mt-x32-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_iostreams-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_iostreams-1.75.0/libboost_iostreams-variant-mgw10-mt-x64-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_iostreams-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_filesystem-1.75.0/boost_filesystem-config-version.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_filesystem-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_filesystem-1.75.0/boost_filesystem-config.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_filesystem-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_filesystem-1.75.0/libboost_filesystem-variant-mgw10-mt-d-x32-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_filesystem-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_filesystem-1.75.0/libboost_filesystem-variant-mgw10-mt-d-x64-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_filesystem-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_filesystem-1.75.0/libboost_filesystem-variant-mgw10-mt-x32-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_filesystem-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_filesystem-1.75.0/libboost_filesystem-variant-mgw10-mt-x64-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_filesystem-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_locale-1.75.0/boost_locale-config-version.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_locale-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_locale-1.75.0/boost_locale-config.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_locale-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_locale-1.75.0/libboost_locale-variant-mgw10-mt-d-x32-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_locale-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_locale-1.75.0/libboost_locale-variant-mgw10-mt-d-x64-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_locale-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_locale-1.75.0/libboost_locale-variant-mgw10-mt-x32-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_locale-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_locale-1.75.0/libboost_locale-variant-mgw10-mt-x64-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_locale-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_system-1.75.0/boost_system-config-version.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_system-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_system-1.75.0/boost_system-config.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_system-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_system-1.75.0/libboost_system-variant-mgw10-mt-d-x32-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_system-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_system-1.75.0/libboost_system-variant-mgw10-mt-d-x64-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_system-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_system-1.75.0/libboost_system-variant-mgw10-mt-x32-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_system-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/Program Files/boost/lib/cmake/boost_system-1.75.0/libboost_system-variant-mgw10-mt-x64-1_75-static.cmake">
+			<Option virtualFolder="CMake Files\Program Files\boost\lib\cmake\boost_system-1.75.0\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/../../../../../../Soft/MSYS2/mingw64/lib/cmake/tbb/TBBConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\Soft\MSYS2\mingw64\lib\cmake\tbb\"/>
+		</Unit>
+		<Unit filename="D:/Da/UCU/Year2/Semester2/ACS/Labs/ucu_parallel_grep/../../../../../../Soft/MSYS2/mingw64/lib/cmake/tbb/TBBConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\Soft\MSYS2\mingw64\lib\cmake\tbb\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
