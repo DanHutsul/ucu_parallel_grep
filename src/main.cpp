@@ -175,14 +175,10 @@ void process_raw_data(tbb::concurrent_bounded_queue<std::string> &archives_to_un
             archives_to_unzip.push("");
             return;
         }
-
-
         std::string raw_data = temp;
-
         std::vector <std::string> unzipped_files;
         // Unzip must have some way to get us file names
         // We must get them into a vector?
-
         // Queue is better
         std::queue <std::string> file_name;
         // And parse a reference of it to function
@@ -247,7 +243,6 @@ int main(int argc, char *argv[]) {
 
     tbb::concurrent_bounded_queue<std::string> archives_to_unzip;
     archives_to_unzip.set_capacity(config.raw_files_queue_size);
-
 
     tbb::concurrent_hash_map<std::string, std::map<int, std::string>, my_hash> maps_to_merge;
 
