@@ -132,9 +132,10 @@ void filter_and_index(std::string &file_content, std::string &file_name, std::st
     boost::char_separator<char> sep("\n");
     tokenizer tok{file_content, sep};
     for (const auto &t : tok) {
-        if (file_content.find(to_find) != std::string::npos) {
+        if (t.find(to_find) != std::string::npos) {
             // Insert into concurrent_hash_map
-            std::cout << "found at line " << line << '\n';
+            //std::cout << "found at line " << line << '\n';
+            std::cout << line << ": " << t << '\n';
             tbb::concurrent_hash_map<std::string, std::map<int, std::string>, my_hash>::accessor a;
             maps_to_merge.insert(a, file_name);
             a->second.insert({line, t});
@@ -146,9 +147,8 @@ void filter_and_index(std::string &file_content, std::string &file_name, std::st
 
 void read_archives_into_queue(std::string& dir_path, tbb::concurrent_bounded_queue<std::string>& archives_to_unzip, tbb::concurrent_bounded_queue<std::string>& file_paths) {
     // We need to create a vector of strings
-    // It will hold full path of file + its name
+    // It will hold full path of file
     // The vector must be thread-safe
-    std::vector<std::string> temp;
     bfs::recursive_directory_iterator end_itr;
     for (bfs::recursive_directory_iterator itr(dir_path); itr != end_itr; itr++) {
         // path is our full path
@@ -198,10 +198,6 @@ void process_raw_data(tbb::concurrent_bounded_queue<std::string> &archives_to_un
             filter_and_index(unzipped_file, ref(file_path), to_find, maps_to_merge);
         }
         unzipped_files.clear();
-        // Clear the queue
-        // By swapping the contents to the empty one
-        std::queue<std::string> empty;
-        file_name.swap(empty);
     }
 }
 
@@ -220,7 +216,8 @@ int main(int argc, char *argv[]) {
 
     std::string string_to_find;
 
-    if (argc > 3) {
+    // Uncomment when done testing
+    /*if (argc > 3) {
         std::cerr << "Too many arguments" << std::endl;
     }
     else if (argc < 2) {
@@ -231,7 +228,10 @@ int main(int argc, char *argv[]) {
         if (argc > 3) {
             cfg_path =  argv[2];
         }
-    }
+    }*/
+
+    // Remove later
+    string_to_find = "Jim";
 
     config_t config;
     config.cfg_path = cfg_path;
@@ -261,6 +261,7 @@ int main(int argc, char *argv[]) {
 
     std::cout << 1 <<std::endl;//temporary prints to see where program works at the moment
 
+    //std::cout << config.indexing_threads <<std::endl;
     for (size_t i = 0; i < config.indexing_threads; i++) {
         vec_of_threads.emplace_back(process_raw_data, ref(archives_to_unzip), ref(maps_to_merge), std::ref(config), ref(string_to_find), ref(file_paths));
     }
@@ -272,7 +273,7 @@ int main(int argc, char *argv[]) {
     auto search_reading_finish = get_current_time_fenced(), indexing_finish = get_current_time_fenced();
     //
     for (auto &thread: vec_of_threads) {
-        std::cout << "Next thread to be joined: " << counter << std::endl; // temp prints to check threads
+        std::cout << "\n\n\nNext thread to be joined: " << counter << std::endl; // temp prints to check threads
         thread.join();
         if (counter == 0) {
             search_reading_finish = get_current_time_fenced();
@@ -289,6 +290,7 @@ int main(int argc, char *argv[]) {
 
     auto total_finish = get_current_time_fenced();
 
+    // Have to change std::map to std::vector of std::pair
     std::vector <std::pair <std::string, std::map<int, std::string>> > results;
 
     std::cout << 5 <<std::endl;
@@ -298,23 +300,47 @@ int main(int argc, char *argv[]) {
         results.emplace_back(pair.first, pair.second);
     }
 
+    // Output, can be repurposed to write file
+    /*
+    for (auto & pair: results) {
+        std::cout << pair.first << std::endl;
+        for (auto & map_pair: pair.second) {
+            std::cout << map_pair.first << ":" << map_pair.second << std::endl;
+        }
+    }*/
+
+
+
+
     std::cout << 6 <<std::endl;
 
-    std::sort(results.begin(), results.end(), sort_by_name);
+    std::sort(results.begin(), results.end());
+
+
 
     std::cout << 7 <<std::endl;
 
     bfs::create_directory("../results");
     // change result_by_amount to just result
     std::ofstream res_out("../results/" + config.result_by_amount);
-    for (const auto& pair : results) {
+
+    /*for (const auto& pair : results) {
         // I don't think I need to sort the map
         // Elements are inserted in order
         res_out << pair.first << ":" << std::endl;
         for (const auto& [key, value]: pair.second) {
             res_out << key << ": " << value << std::endl;
         }
+    }*/
+
+    for (auto & pair: results) {
+        res_out << pair.first << std::endl;
+        for (auto & map_pair: pair.second) {
+            res_out << map_pair.first << ":" << map_pair.second << std::endl;
+        }
     }
+
+
     std::cout << 8 <<std::endl;
     res_out.close();
     /*
