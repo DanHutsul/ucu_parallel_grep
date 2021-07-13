@@ -11,7 +11,7 @@ The time doesn't change much in correlation to rarity of string chosen. Number o
 
 ### Time:
 
-Total time. Word searched `Jim`: 14727.53
+Total time. Word searched `Jim`: 14727.53s
 
 Total time. Word searched `teapot`: 14631.33s
 
