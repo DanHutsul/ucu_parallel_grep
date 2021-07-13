@@ -1,5 +1,4 @@
-path = ..\iso\
-res_file_by_name = result_by_name2.txt
-res_file_by_number = result_by_number2.txt
-indexing_threads = 2
+path = ../iso/
+res_file = result_thread7.txt
+indexing_threads = 7
 raw_files_queue_size = 1000

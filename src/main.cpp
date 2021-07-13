@@ -61,16 +61,14 @@ void read_config(config_t &config) {
     }
     cfg.close();
 
-    if (config_data["path"].empty() || config_data["res_file_by_number"].empty() ||
-        config_data["res_file_by_name"].empty() || config_data["indexing_threads"].empty() ||
+    if (config_data["path"].empty() || config_data["res_file"].empty() || config_data["indexing_threads"].empty() ||
         config_data["raw_files_queue_size"].empty())
     {
         std::cout << "Write the appropriate config!" << std::endl;
         exit(INVALID_CFG_ERR);
     }
     config.dir_path = config_data["path"];
-    config.result_by_amount = config_data["res_file_by_number"];
-    config.result_by_name = config_data["res_file_by_name"];
+    config.result = config_data["res_file"];
     config.indexing_threads = std::stoi(config_data["indexing_threads"]);
     config.raw_files_queue_size = std::stoi(config_data["raw_files_queue_size"]);
 }
@@ -86,7 +84,7 @@ std::string read_binary_file(const std::string& file_name) {
 }
 
 // out_filename must be a vector or a queue
-void unzip(std::string &raw_data, std::vector <std::string> &result, std::queue<std::string> &out_filename){
+void unzip(std::string &raw_data, std::vector <std::string> &result, tbb::concurrent_bounded_queue<std::string> &out_filename){
     struct archive *arch;
     struct archive_entry *entry;
     int error_code;
@@ -103,9 +101,7 @@ void unzip(std::string &raw_data, std::vector <std::string> &result, std::queue<
     }
 
     while (archive_read_next_header(arch, &entry) == ARCHIVE_OK) {
-
         std::string filename = archive_entry_pathname(entry);
-
         std::string curr_extension = bl::to_lower(filename.substr(filename.find_last_of(".") + 1));
         if (curr_extension != "txt") {
             continue;
@@ -135,7 +131,7 @@ void filter_and_index(std::string &file_content, std::string &file_name, std::st
         if (t.find(to_find) != std::string::npos) {
             // Insert into concurrent_hash_map
             //std::cout << "found at line " << line << '\n';
-            std::cout << line << ": " << t << '\n';
+            //std::cout << line << ": " << t << '\n';
             tbb::concurrent_hash_map<std::string, std::map<int, std::string>, my_hash>::accessor a;
             maps_to_merge.insert(a, file_name);
             a->second.insert({line, t});
@@ -150,9 +146,11 @@ void read_archives_into_queue(std::string& dir_path, tbb::concurrent_bounded_que
     // It will hold full path of file
     // The vector must be thread-safe
     bfs::recursive_directory_iterator end_itr;
+
     for (bfs::recursive_directory_iterator itr(dir_path); itr != end_itr; itr++) {
         // path is our full path
         std::string path = itr->path().string();
+
         if (bl::to_lower(path.substr(path.find_last_of(".") + 1)) == "zip") {
             // At this point we have our .zip path
             // So we push it
@@ -165,43 +163,46 @@ void read_archives_into_queue(std::string& dir_path, tbb::concurrent_bounded_que
     archives_to_unzip.push("");
 }
 
-
 void process_raw_data(tbb::concurrent_bounded_queue<std::string> &archives_to_unzip,
                       tbb::concurrent_hash_map<std::string, std::map<int, std::string>, my_hash> &maps_to_merge,
                       config_t &config, std::string &to_find, tbb::concurrent_bounded_queue<std::string>& file_paths) {
     for (;;) {
         std::string temp;
-        if (archives_to_unzip.try_pop(temp) && temp.empty()) {
-            archives_to_unzip.push("");
-            return;
+        std::string temp_file_path;
+        if (archives_to_unzip.try_pop(temp)){
+            if (temp.empty()) {
+                archives_to_unzip.push("");
+                return;
+            }
+            file_paths.try_pop(ref(temp_file_path));
         }
+        std::string file_path = temp_file_path;
         std::string raw_data = temp;
         std::vector <std::string> unzipped_files;
         // Unzip must have some way to get us file names
         // We must get them into a vector?
         // Queue is better
-        std::queue <std::string> file_name;
+        tbb::concurrent_bounded_queue <std::string> file_name;
         // And parse a reference of it to function
         unzip(raw_data, unzipped_files, ref(file_name));
         // Create string to give to filter function
-        std::string file_path;
         for (auto & unzipped_file : unzipped_files) {
+            std::string file_path_name;
             // Fill the string
-            file_paths.pop(ref(file_path));
-            file_path = file_path + "/" + file_name.front();
-            file_name.pop();
+            file_name.pop(ref(file_path_name));
+            std::string full_path = file_path + "/" + file_path_name;
             // Then parse a reference of it to this function
-            filter_and_index(unzipped_file, ref(file_path), to_find, maps_to_merge);
+            filter_and_index(unzipped_file, ref(full_path), to_find, maps_to_merge);
         }
         unzipped_files.clear();
     }
 }
 
 
-bool sort_by_name(const std::pair<int,std::string> &a,
-                  const std::pair<int,std::string> &b)
+bool sort_by_name(const std::pair<std::string, std::map<int, std::string>> &a,
+                  const std::pair<std::string, std::map<int, std::string>> &b)
 {
-    return (a.second < b.second);
+    return (a.first < b.first);
 }
 
 int main(int argc, char *argv[]) {
@@ -213,21 +214,23 @@ int main(int argc, char *argv[]) {
     std::string string_to_find;
 
     // Uncomment when done testing
-    /*if (argc > 3) {
+    if (argc > 3) {
         std::cerr << "Too many arguments" << std::endl;
+        return -1;
     }
     else if (argc < 2) {
         std::cerr << "Too few arguments\nNo string inputted" << std::endl;
+        return -1;
     }
     else {
         string_to_find = argv[1];
-        if (argc > 3) {
+        if (argc > 2) {
             cfg_path =  argv[2];
         }
-    }*/
+    }
 
     // Remove later
-    string_to_find = "Jim";
+    //string_to_find = "Jim";
 
     config_t config;
     config.cfg_path = cfg_path;
@@ -268,7 +271,7 @@ int main(int argc, char *argv[]) {
     auto search_reading_finish = get_current_time_fenced(), indexing_finish = get_current_time_fenced();
     //
     for (auto &thread: vec_of_threads) {
-        std::cout << "\n\n\nNext thread to be joined: " << counter << std::endl; // temp prints to check threads
+        std::cout << "Next thread to be joined: " << counter << std::endl; // temp prints to check threads
         thread.join();
         if (counter == 0) {
             search_reading_finish = get_current_time_fenced();
@@ -309,7 +312,7 @@ int main(int argc, char *argv[]) {
 
     std::cout << 6 <<std::endl;
 
-    std::sort(results.begin(), results.end());
+    std::sort(results.begin(), results.end(), sort_by_name);
 
 
 
@@ -317,7 +320,7 @@ int main(int argc, char *argv[]) {
 
     bfs::create_directory("../results");
     // change result_by_amount to just result
-    std::ofstream res_out("../results/" + config.result_by_amount);
+    std::ofstream res_out("../results/" + config.result);
 
     /*for (const auto& pair : results) {
         // I don't think I need to sort the map
